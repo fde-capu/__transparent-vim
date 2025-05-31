@@ -2,7 +2,7 @@
 " Author - fde-capu
 " License - © 2024 WTFPL, Do What the Fuck You Want to Public License. - http://www.wtfpl.net/
 
-let g:colors_name = "__transparent"
+let g:colors_name = g:colors_name . "__transparent"
 
 set background=dark
 " hi clear
@@ -10,30 +10,24 @@ set background=dark
 
 fun <SID>Xbg(groups)
 	for group in a:groups
-		let fgcolor = synIDattr(synIDtrans(hlID(group)), "fg")
-		exec "hi " . group . " ctermbg=none"
-		if fgcolor != ""
-			exec "hi " . group . " ctermfg=" . fgcolor
-		endif
+		exec "hi " . group . " guibg=NONE ctermbg=none"
 	endfor
 endfun
 
 fun <SID>Xgray(groups)
 	for group in a:groups
-		exec "hi " . group . " cterm=none"
-		exec "hi " . group . " ctermfg=8"
+    exec "hi " . group . " guifg=#808080 ctermfg=8"
 	endfor
 endfun
 
 fun <SID>Xblack(groups)
 	for group in a:groups
-		exec "hi " . group . " cterm=none"
-		exec "hi " . group . " ctermfg=0"
+    exec "hi " . group . " guifg=#000000 ctermfg=0"
 	endfor
 endfun
 
-hi StatusLineTerm ctermbg=None
-hi StatusLineTermNC ctermbg=None
+"hi StatusLineTerm ctermbg=None
+"hi StatusLineTermNC ctermbg=None
 
 let transp_bg_groups = [
 \ 'Normal',
@@ -86,17 +80,16 @@ let transp_bg_groups = [
 \ "NonText",
 \ "LineNr",
 \ "Flashy",
+\ "StatusLineTerm",
+\ "StatusLineTermNC",
 \ "Normal"
 \ ]
 
 let transp_gray_groups = [
-\ 'Normal',
 \ "StatusLineNC",
-\ "StatusLine",
 \ "VertSplit",
 \ "TabLine",
-\ "TabLineFill",
-\ 'Normal'
+\ "TabLineFill"
 \ ]
 
 let black_groups = [
