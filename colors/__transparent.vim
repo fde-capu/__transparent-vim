@@ -4,30 +4,23 @@
 
 let g:colors_name = g:colors_name . "__transparent"
 
-set background=dark
-" hi clear
-" syntax reset
-
 fun <SID>Xbg(groups)
 	for group in a:groups
 		exec "hi " . group . " guibg=NONE ctermbg=none"
 	endfor
 endfun
 
-fun <SID>Xgray(groups)
+fun <SID>FgGray(groups)
 	for group in a:groups
     exec "hi " . group . " guifg=#808080 ctermfg=8"
 	endfor
 endfun
 
-fun <SID>Xblack(groups)
+fun <SID>BgBlack(groups)
 	for group in a:groups
     exec "hi " . group . " guifg=#000000 ctermfg=0"
 	endfor
 endfun
-
-"hi StatusLineTerm ctermbg=None
-"hi StatusLineTermNC ctermbg=None
 
 let transp_bg_groups = [
 \ 'Normal',
@@ -85,17 +78,17 @@ let transp_bg_groups = [
 \ "Normal"
 \ ]
 
-let transp_gray_groups = [
+let gray_fg_groups = [
 \ "StatusLineNC",
 \ "VertSplit",
 \ "TabLine",
 \ "TabLineFill"
 \ ]
 
-let black_groups = [
+let black_bg_groups = [
 \ "VertSplit"
 \ ]
 
 call <SID>Xbg(transp_bg_groups)
-call <SID>Xgray(transp_gray_groups)
-call <SID>Xblack(black_groups)
+call <SID>FgGray(gray_fg_groups)
+call <SID>BgBlack(black_bg_groups)
